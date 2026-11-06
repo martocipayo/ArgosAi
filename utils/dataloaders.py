@@ -274,6 +274,8 @@ class LoadWebcam:  # for inference
         self.stride = stride
         self.pipe = eval(pipe) if pipe.isnumeric() else pipe
         self.cap = cv2.VideoCapture(self.pipe)  # video capture object
+        self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+        self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
         self.cap.set(cv2.CAP_PROP_BUFFERSIZE, 3)  # set buffer size
 
     def __iter__(self):
